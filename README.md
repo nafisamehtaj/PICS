@@ -19,6 +19,7 @@ Digital Twin-Enabled Structural Health Monitoring* (i-MAPS, University of South 
 | Train / validation / held-out split, temporal subsampling | [`Codes/pics_pinn.py` L270-L318](Codes/pics_pinn.py#L270-L318) `build_dataset` |
 | Non-dimensionalisation (scalers, $\beta_y$, $\beta_z$, $\gamma$) | [`Codes/pics_pinn.py` L198-L240](Codes/pics_pinn.py#L198-L240) `PotentialScalers` |
 | Fourier-feature embedding | [`Codes/pics_pinn.py` L390-L422](Codes/pics_pinn.py#L390-L422) `SpecializedFourierFeatures` |
+| **Dispersion-band clamp** on the trainable frequencies (band set at L66-L68, box built at L417-L421, projection at L407-L409, applied after every optimiser step at L703-L704) | [`Codes/pics_pinn.py` L407-L409](Codes/pics_pinn.py#L407-L409) `clamp_B` |
 | **Network** (backbone + four-potential head) | [`Codes/pics_pinn.py` L434-L464](Codes/pics_pinn.py#L434-L464) `PotentialNet` |
 | Helmholtz displacement $\mathbf{u} = \nabla\phi + \nabla\times\boldsymbol{\psi}$ | [`Codes/pics_pinn.py` L471-L479](Codes/pics_pinn.py#L471-L479) `displacement` |
 | **Physics loss: wave equation residual** | [`Codes/pics_pinn.py` L481-L502](Codes/pics_pinn.py#L481-L502) `_wave_residual`, `physics_residuals` |
@@ -172,6 +173,11 @@ temporal 1 / 10 / 20 %.
 
 ## Remarks
 
+- The shipped checkpoints are the clamped model. Each `model.pt` stores the clamp bounds
+  `features.B_min` and `features.B_max` alongside the learned frequencies `features.B`, and in
+  all nine runs every learned frequency lies inside its band ($k_x, k_y, k_z$ within
+  $\pm 0.26$ cycles/mm, $f$ within 0 to 300 kHz, in network units). The clamp is applied after
+  every optimiser step throughout training, including the data-only warm-up.
 - The 16 GB simulation, the training CSVs and the `.npz` figure caches are not tracked.
   Everything needed to regenerate the figures from the trained models is in the repository.
 - `sp1_t10` and `sp1_t20` were trained for 80 epochs, the other seven for 600 (`sp20_t10`
