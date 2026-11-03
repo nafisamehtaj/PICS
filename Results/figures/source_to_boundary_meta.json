@@ -1,0 +1,33 @@
+{
+  "source": [
+    -49.5,
+    -98.5
+  ],
+  "y_line": -48.5,
+  "points": [
+    [
+      -19.5,
+      -48.5
+    ],
+    [
+      36.5,
+      -48.5
+    ],
+    [
+      57.5,
+      -48.5
+    ],
+    [
+      80.5,
+      -48.5
+    ]
+  ],
+  "peak_u_mm": [
+    1.1289927329442227e-05,
+    1.1901897652188287e-05,
+    1.1442993319825537e-05,
+    1.0891573252723549e-05
+  ],
+  "model_run": "sp20_t20_silu_F256_h256x256x256_a1_hpc",
+  "note": "(c) 93.5->57.5 and (d) 116.5->80.5 so every panel shows a first-arrival wave packet rather than only its leading edge. (c) fully rings down; (d) has a slightly clipped tail (24% of peak at step 6000), traded for reach. Line no longer extends to the plate boundary at x=149.5."
+}

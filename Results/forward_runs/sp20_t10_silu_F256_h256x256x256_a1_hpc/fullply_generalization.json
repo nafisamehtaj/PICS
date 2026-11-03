@@ -1,0 +1,16 @@
+{
+  "stats": {
+    "n_points": 1500,
+    "t_stride": 2,
+    "relL2_median": 0.0984794281442688,
+    "relL2_mean": 0.19986856282395504,
+    "relL2_p10": 0.037383055493866245,
+    "relL2_p90": 0.3553712785506627,
+    "relL2_max": 16.39414739322992,
+    "frac_below_0p10": 0.5053333333333333,
+    "frac_below_0p15": 0.68,
+    "frac_below_0p20": 0.7786666666666666,
+    "n_outliers_gt_0p60": 61,
+    "energy_weighted_relL2_over_time": 0.29047012060415556
+  }
+}

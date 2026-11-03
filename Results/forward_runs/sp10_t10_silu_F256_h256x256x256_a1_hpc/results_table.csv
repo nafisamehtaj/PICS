@@ -1,0 +1,2 @@
+name,E_r,E_b,recon_median,recon_mean,unseen_median,unseen_mean
+"PINN (silu, F256, 256x256x256, a=1.0)","wave (phi,psi) + gauge + IC","Dirichlet u=v=w=0",0.090327,0.150559,0.228904,0.363067

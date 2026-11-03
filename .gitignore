@@ -1,0 +1,15 @@
+# PICS: large or regenerable artefacts stay out of git
+__pycache__/
+*.pyc
+*.log
+
+# the 16 GB peri-elastodynamic simulation and the generated training CSVs
+# (rebuild with Codes/forward/gen_layerwise_dataset.py)
+Dataset/3D_Pristine.mat
+Dataset/*.csv
+
+# figure inference caches
+*.npz
+
+# training checkpoints (model.pt, ~3 MB, is kept)
+checkpoint.pt

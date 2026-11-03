@@ -1,0 +1,8 @@
+# PICS dependencies
+# Forward runs were trained on an NVIDIA V100 (float64); the figure scripts run on CPU.
+torch>=2.2.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+h5py>=3.8.0            # reads the MATLAB v7.3 simulation file (3D_Pristine.mat)
+Pillow>=10.0.0         # Codes/figures/regen_fig6_extrap_interp.py

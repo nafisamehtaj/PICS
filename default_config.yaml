@@ -1,0 +1,105 @@
+# =============================================================================
+# PICS - Default Configuration
+# =============================================================================
+# Consolidates the hyperparameters, data paths and experimental settings used by
+# the forward reconstruction runs.
+# The scripts keep their own constants; this file is the single human-readable
+# reference. Forward values are the headline 20% spatial / 20% temporal run
+# (Results/forward_runs/sp20_t20_silu_F256_h256x256x256_a1_hpc/config.json);
+# code constants come from Codes/forward/scinonet_pinn.py.
+# =============================================================================
+
+# ---------------------
+# Material Properties
+# ---------------------
+material:
+  name: "Aluminum 6061-T6"
+  cp_mm_per_us: 6.3                     # longitudinal (P) wave speed, held fixed in the forward model
+  cs_mm_per_us: 3.2                     # shear (S) wave speed, held fixed in the forward model
+
+# ---------------------
+# Simulation (peri-elastodynamic source data)
+# ---------------------
+simulation:
+  file: "Dataset/3D_Pristine.mat"       # MATLAB v7.3 / HDF5, 16 GB, not tracked in git
+  plate:
+    length_mm: 300                      # x = -149.5 .. 149.5
+    width_mm: 200                       # y = -199.5 .. -0.5
+    thickness_mm: 2
+  plies: 3                              # z = 0, -1, -2 mm
+  points_per_ply: 60000                 # 1 mm grid, 300 x 200
+  timesteps: 6001
+  dt_s: 1.0e-8                          # 0 .. 60 us
+  excitation:
+    frequency_kHz: 150
+    tone_burst_cycles: 3.5
+    source_xy_mm: [-50.5, -99.5]
+  hdf5_keys: ["Disp_x", "Disp_y", "Disp_z", "X_zero_coord_ply", "Y_zero_coord_ply", "Z_zero_coord_ply", "dt", "TotTim"]
+
+# ---------------------
+# Data sampling (compressive sensing budget)
+# ---------------------
+sampling:
+  spatial_pct: [1, 10, 20]              # fraction of first-ply (x, y) points, taken at all 3 plies
+  temporal_keep: [0.01, 0.10, 0.20]     # fraction of the 6001 timesteps kept per trained point
+  boundary_frac: 0.20                   # share of the spatial budget forced onto the plate perimeter
+  edge_tol_mm: 0.6
+  n_held_spatial: 10                    # never-seen test points (boundary points are never held out)
+  seed: 42
+  dataset_columns: ["x", "y", "z", "t", "u", "v", "w", "is_boundary"]   # mm, s, mm
+
+# ---------------------
+# Forward model (Helmholtz-potential PINN)
+# ---------------------
+model:
+  outputs: ["phi", "psi_x", "psi_y", "psi_z"]    # displacement u = grad(phi) + curl(psi)
+  fourier_features:
+    type: "SpecializedFourierFeatures"  # learnable B clamped to the dispersion band
+    num_freq: 256
+    k_max_spatial_cyc_per_mm: 0.13
+    spatial_scale: 2.0
+    f_max_hz: 300.0e3
+    concat_raw: true
+  hidden: [256, 256, 256]
+  activation: "silu"                    # tanh | sin | gelu | silu
+  dtype: "float64"                      # 2nd-order autograd in the wave residual needs it
+
+# ---------------------
+# Physics loss
+# ---------------------
+loss:
+  terms: ["data", "wave", "gauge", "ic", "bdry"]
+  total: "L_data + lambda * (L_wave + W_GAUGE*L_gauge + W_IC*L_ic + W_BDRY*L_bdry)"
+  reduction: "MSE"
+  w_gauge: 1.0
+  w_ic: 1.0
+  w_bdry: 1.0
+  balance_alpha: 1.0                    # lambda set per epoch so ||grad L_phys|| = alpha * ||grad L_data||
+  balance_ema: 0.9
+  n_colloc: 2048
+  n_ic: 1024
+  n_bdry: 1024
+  bdry_edges: ["x_min", "x_max", "y_min", "y_max"]
+  bdry_value: 0.0
+  data_only_epochs: 30                  # physics turns on after this warmup
+  drop_data_after_warmup: false
+
+# ---------------------
+# Training
+# ---------------------
+training:
+  optimizer: "Adam"
+  lr: 2.0e-3
+  scheduler:
+    type: "ReduceLROnPlateau"
+    factor: 0.5
+    patience: 15
+    min_lr: 1.0e-5
+  grad_clip: 1.0
+  batch_size: 16384
+  epochs: 600                           # sp20_t10 ran 640 (48 h wall limit); sp1_t10 / sp1_t20 ran 80
+  early_stop_patience: 50
+  ckpt_every: 5
+  seed: 42
+  hardware: "1x NVIDIA V100 32 GB, float64"
+
