@@ -5,10 +5,10 @@ Rebuilds the exact train / boundary / held-out split from a run's config.json
 into that run folder, in the current visualization style.
 
     # for a finished run
-    python Codes/forward/plot_plate.py \
+    python Codes/tools/plot_plate.py \
         --run Results/forward_runs/sp1_t10_silu_F256_h256x256x256_a3_best
     # or directly for a dataset
-    python Codes/forward/plot_plate.py --csv <dataset.csv>
+    python Codes/tools/plot_plate.py --csv <dataset.csv>
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ import os
 import sys
 
 HERE = os.path.dirname(__file__)
-sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.join(HERE, ".."))  # pics_pinn.py lives one level up
 import pics_pinn as P  # noqa: E402
 
 

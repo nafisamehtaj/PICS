@@ -15,12 +15,12 @@ measured off the embedded rasters (word/media/image14-16.png):
     Y_SHIFT below is what does it. Set Y_SHIFT = 0.0 for true plate coordinates.
   * viridis, scaled to the data range (not symmetric about zero). Actual and predicted share
     one range per column -- concatenate both, take min/max -- which is the same convention as
-    Codes/forward/reconstruct_field.py. The error panel is scaled 0..max.
+    Codes/step4_reconstruct_field.py. The error panel is scaled 0..max.
   * every panel carries its own colourbar; offset text (1e-7 etc.) sits above it.
   * grey panes with white gridlines and black axis lines; serif text.
 
-    python regen_fig12_viridis.py                  # all three components
-    python regen_fig12_viridis.py --components w   # just Fig. 12c
+    python fig12_viridis.py                  # all three components
+    python fig12_viridis.py --components w   # just Fig. 12c
 """
 import argparse
 import json
@@ -38,7 +38,7 @@ from matplotlib.ticker import MaxNLocator, ScalarFormatter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-sys.path.insert(0, os.path.join(REPO, "Codes", "forward"))
+sys.path.insert(0, os.path.join(REPO, "Codes"))
 import pics_pinn as P  # noqa: E402
 import h5py  # noqa: E402
 

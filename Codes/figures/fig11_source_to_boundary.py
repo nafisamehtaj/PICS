@@ -21,14 +21,14 @@ increasing propagation distance rather than decay all the way to the edge; the t
 that. Nothing in the record fully rings down before step 6000 (low-level reverberation
 persists everywhere), so "complete packet" means the dominant first arrival, not zero tail.
 
-    python regen_source_to_boundary.py
+    python fig11_source_to_boundary.py
 """
 import os, sys, json
 import numpy as np, torch, matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-SCRIPTS = os.path.join(REPO, "Codes", "forward")
+SCRIPTS = os.path.join(REPO, "Codes")
 sys.path.insert(0, SCRIPTS)
 import pics_pinn as P  # noqa: E402
 import h5py

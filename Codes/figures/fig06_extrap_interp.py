@@ -12,7 +12,7 @@ Selected points (printed at run time, also written to extrap_interp_meta.json):
 
 No dataset rebuild: scalers are read from each model.pt; the point selection and
 temporal keep-mask are reproduced from coordinates + seed (matching
-gen_layerwise_dataset.py and pics_pinn.build_dataset).
+step1_generate_dataset.py and pics_pinn.build_dataset).
 
 Original driver ran from the session scratchpad as seen_figure.py; this file is
 the same code recovered verbatim from the 2026-07-05 session transcript.
@@ -25,7 +25,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE    = os.path.dirname(os.path.abspath(__file__))
-SCRIPTS = os.path.abspath(os.path.join(HERE, "..", "forward"))
+SCRIPTS = os.path.abspath(os.path.join(HERE, ".."))
 OUTBASE = os.path.abspath(os.path.join(HERE, "..", "..", "Results", "forward_runs"))
 MAT     = os.path.abspath(os.path.join(HERE, "..", "..", "Dataset", "3D_Pristine.mat"))
 OUTDIR  = HERE
@@ -41,7 +41,7 @@ N_PLY = 60000
 X_MIN, X_MAX, Y_MIN, Y_MAX = -149.5, 149.5, -199.5, -0.5
 SEED = 42; PCT = 10.0; BOUND_FRAC = 0.20; EDGE_TOL = 0.6
 
-# ---------------- reproduce the 10% selection (gen_layerwise_dataset.py) --------
+# ---------------- reproduce the 10% selection (step1_generate_dataset.py) --------
 with h5py.File(MAT, "r") as f:
     x_all = np.array(f["X_zero_coord_ply"]).ravel() * MM
     y_all = np.array(f["Y_zero_coord_ply"]).ravel() * MM

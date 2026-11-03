@@ -4,7 +4,7 @@ __pycache__/
 *.log
 
 # the 16 GB peri-elastodynamic simulation and the generated training CSVs
-# (rebuild with Codes/forward/gen_layerwise_dataset.py)
+# (rebuild with Codes/step1_generate_dataset.py)
 Dataset/3D_Pristine.mat
 Dataset/*.csv
 

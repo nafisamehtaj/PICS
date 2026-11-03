@@ -12,7 +12,7 @@ unseen spatial holdout and on a small set of seen points' held-out timesteps),
 plus the final physics residuals. Results are ranked and the recommended full
 config is printed. Writes outputs/search_<dataset>/search.{csv,json} and a plot.
 
-    python Codes/forward/run_search.py \
+    python Codes/tools/run_search.py \
         --csv Dataset/dataset_layerwise_0p2pct_3ply_fullsignal_6001steps.csv \
         --epochs 40
 """
@@ -31,7 +31,7 @@ import torch
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
-sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.join(HERE, ".."))  # pics_pinn.py lives one level up
 
 import pics_pinn as P  # noqa: E402
 

@@ -3,7 +3,7 @@
 Each card is generated from that run's config.json + metrics.json so it stays
 accurate. Also refreshes the catalog table in the experiment README.
 
-    python Codes/forward/make_run_cards.py
+    python Codes/tools/make_run_cards.py
 """
 
 from __future__ import annotations
@@ -41,7 +41,7 @@ Layer-wise PINN run. **{cfg.get('pct_spatial')}% spatial** sampling x
 
 ## Data
 - **File:** `{dataset}`
-- Built by `scripts/gen_layerwise_dataset.py --pct {cfg.get('pct_spatial')}`: random
+- Built by `scripts/step1_generate_dataset.py --pct {cfg.get('pct_spatial')}`: random
   per-layer sample at all 3 plies, with a reserved fraction of perimeter
   (`is_boundary=1`) points that are kept in training (never spatially held out).
 

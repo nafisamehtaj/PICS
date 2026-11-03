@@ -7,7 +7,7 @@ that fit this experiment: there is no inside/outside split here, only
 
 Reads metrics.json + config.json from a run dir; writes results_table.{png,svg,tex,csv}.
 
-    python Codes/forward/make_results_table.py \
+    python Codes/step5_results_table.py \
         --out Results/forward_runs/sp20_t10_silu_F256_h256x256x256_a1_hpc
 """
 from __future__ import annotations

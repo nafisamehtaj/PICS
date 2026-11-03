@@ -14,7 +14,7 @@ configuration on a generated layer-wise dataset and writes, under
 The training dataset itself lives under ``data/`` and is referenced (not copied)
 so prediction code can be re-run later without retraining.
 
-    python Codes/forward/run_exp.py \
+    python Codes/step2_train.py \
         --csv Dataset/dataset_layerwise_1pct_3ply_fullsignal_6001steps.csv \
         --activation tanh --num-freq 160 --hidden 256 256 256 \
         --balance-alpha 0.3 --epochs 150 --patience 40
@@ -31,7 +31,7 @@ import numpy as np
 import torch
 
 HERE = os.path.dirname(__file__)
-ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+ROOT = os.path.abspath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
 
 import pics_pinn as P  # noqa: E402

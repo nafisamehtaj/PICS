@@ -5,4 +5,4 @@ numpy>=1.24.0
 pandas>=2.0.0
 matplotlib>=3.7.0
 h5py>=3.8.0            # reads the MATLAB v7.3 simulation file (3D_Pristine.mat)
-Pillow>=10.0.0         # Codes/figures/regen_fig6_extrap_interp.py
+Pillow>=10.0.0         # Codes/figures/fig06_extrap_interp.py

@@ -3,9 +3,9 @@
 Used when a run is killed at the SLURM wall limit before it could write
 metrics.json / model.pt / figures. Rebuilds the exact dataset from config.json,
 loads the best-by-validation weights from checkpoint.pt, then runs the same
-evaluate() + figure pipeline as run_exp.py.
+evaluate() + figure pipeline as step2_train.py.
 
-    python Codes/forward/eval_from_ckpt.py \
+    python Codes/step3_evaluate_checkpoint.py \
         --out Results/forward_runs/sp20_t10_silu_F256_h256x256x256_a1_hpc
 """
 from __future__ import annotations
@@ -18,11 +18,11 @@ import sys
 import torch
 
 HERE = os.path.dirname(__file__)
-ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+ROOT = os.path.abspath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
 
 import pics_pinn as P  # noqa: E402
-from run_exp import evaluate  # noqa: E402
+from step2_train import evaluate  # noqa: E402
 
 
 def main():

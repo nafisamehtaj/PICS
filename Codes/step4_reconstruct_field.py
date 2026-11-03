@@ -9,7 +9,7 @@ Output: one figure, rows = {u, v, w}, columns = [Actual, Predicted] per timestep
 with the plate aspect ratio preserved, a diverging (zero-centered) colormap shared
 per field row, large fonts, and academic labels.
 
-    python Codes/forward/reconstruct_field.py \
+    python Codes/step4_reconstruct_field.py \
         --out  Results/forward_runs/sp20_t10_silu_F256_h256x256x256_a1_hpc \
         --mat  data/3D_Pristine.mat --timesteps 300 3000 5800
 """

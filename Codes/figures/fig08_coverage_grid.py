@@ -11,8 +11,8 @@ per-panel relative-L2 against the values printed on the published figure:
 Rows = spatial keep ratio, columns = temporal keep ratio, one model per cell (nine runs, all
 silu_F256_h256x256x256_a1_hpc). Displacements in mm, single shared colour scale and one colourbar.
 
-    python regen_pred_u_3x3_grid.py                # jet
-    python regen_pred_u_3x3_grid.py --cmap viridis
+    python fig08_coverage_grid.py                # jet
+    python fig08_coverage_grid.py --cmap viridis
 """
 import argparse
 import json
@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-sys.path.insert(0, os.path.join(REPO, "Codes", "forward"))
+sys.path.insert(0, os.path.join(REPO, "Codes"))
 import pics_pinn as P  # noqa: E402
 import h5py  # noqa: E402
 

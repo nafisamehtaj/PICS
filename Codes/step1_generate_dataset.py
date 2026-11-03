@@ -18,9 +18,9 @@ out).
 Only coordinate arrays and the selected rows are read from the 16 GB .mat.
 
     # local, smallest
-    python Codes/forward/gen_layerwise_dataset.py --pct 1
+    python Codes/step1_generate_dataset.py --pct 1
     # larger ones (run on HPC)
-    python Codes/forward/gen_layerwise_dataset.py --pct 10
+    python Codes/step1_generate_dataset.py --pct 10
 """
 
 from __future__ import annotations

@@ -9,7 +9,7 @@ residuals, and recommends the largest alpha whose val data MSE stays within
 
 Writes ``outputs/phys_sweep_<dataset>/sweep.{json,csv}`` and a summary plot.
 
-    python Codes/forward/run_phys_sweep.py \
+    python Codes/tools/run_phys_sweep.py \
         --csv Dataset/dataset_layerwise_1pct_3ply_fullsignal_6001steps.csv \
         --alphas 0.3 0.5 1.0 2.0 4.0 --epochs 40
 """
@@ -27,7 +27,7 @@ import torch
 
 HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
-sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.join(HERE, ".."))  # pics_pinn.py lives one level up
 
 import pics_pinn as P  # noqa: E402
 

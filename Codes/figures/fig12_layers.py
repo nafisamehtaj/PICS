@@ -21,8 +21,8 @@ source, so a full-range limit renders the wavefronts almost white under a diverg
 Layout is placed manually rather than through subplots, because matplotlib reserves a large
 margin around 3D axes that cannot be recovered with tight_layout/subplots_adjust.
 
-    python regen_fig12_layers.py                  # all three components
-    python regen_fig12_layers.py --components u   # just Fig. 12a
+    python fig12_layers.py                  # all three components
+    python fig12_layers.py --components u   # just Fig. 12a
 """
 import argparse
 import json
@@ -40,7 +40,7 @@ from matplotlib.ticker import ScalarFormatter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-SCRIPTS = os.path.join(REPO, "Codes", "forward")
+SCRIPTS = os.path.join(REPO, "Codes")
 sys.path.insert(0, SCRIPTS)
 import pics_pinn as P  # noqa: E402
 import h5py  # noqa: E402
