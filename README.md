@@ -8,9 +8,9 @@ Digital Twin-Enabled Structural Health Monitoring* (i-MAPS, University of South 
 
 ---
 
-## Where is what
+## Code Map
 
-| Looking for | Go to |
+| Component | Location |
 |---|---|
 | **Training configuration** (every hyperparameter, with the reason for each) | [`configs/training_config.yaml`](configs/training_config.yaml) |
 | The exact command for each of the nine trained models | [`configs/train_all_nine.sh`](configs/train_all_nine.sh) |
@@ -35,7 +35,7 @@ Digital Twin-Enabled Structural Health Monitoring* (i-MAPS, University of South 
 
 ---
 
-## The physics in the loss
+## Physics-Informed Loss Formulation
 
 The network outputs four potentials $(\phi, \psi_x, \psi_y, \psi_z)$ of the non-dimensional
 coordinates $(x, y, z, t)$. Everything else is derived from them by automatic differentiation.
@@ -65,7 +65,7 @@ in `train`, [`Codes/pics_pinn.py` L557-L776](Codes/pics_pinn.py#L557-L776).
 
 ---
 
-## Repository layout
+## Repository Structure
 
 ```
 ├── Codes/
@@ -100,7 +100,7 @@ in `train`, [`Codes/pics_pinn.py` L557-L776](Codes/pics_pinn.py#L557-L776).
 
 ---
 
-## Quick start
+## Usage
 
 ```bash
 pip install -r requirements.txt
@@ -133,7 +133,7 @@ They write PNG/SVG next to the script and cache the slow inference in a `.npz`; 
 
 ---
 
-## Data
+## Dataset and Sampling Protocol
 
 | Item | Value |
 |---|---|
@@ -147,7 +147,7 @@ They write PNG/SVG next to the script and cache the slow inference in a `.npz`; 
 
 ---
 
-## Results
+## Summary of Results
 
 Median relative-L2 error from each run's `metrics.json`:
 
@@ -170,7 +170,7 @@ temporal 1 / 10 / 20 %.
 
 ---
 
-## Notes
+## Remarks
 
 - The 16 GB simulation, the training CSVs and the `.npz` figure caches are not tracked.
   Everything needed to regenerate the figures from the trained models is in the repository.
