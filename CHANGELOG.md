@@ -82,5 +82,5 @@ the pipeline without opening the code:
 - Search, sweep and plotting helpers moved to `Codes/tools/`.
 - `default_config.yaml` moved to `configs/training_config.yaml`, joined by
   `configs/train_all_nine.sh` with the exact nine training commands.
-- The README opens with a "Where is what" table that links to the physics residuals, the
+- The README opens with a Code Map table that links to the physics residuals, the
   loss, the dataset builder and the training loop by line number.
