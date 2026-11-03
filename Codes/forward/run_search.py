@@ -33,7 +33,7 @@ HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 sys.path.insert(0, HERE)
 
-import scinonet_pinn as P  # noqa: E402
+import pics_pinn as P  # noqa: E402
 
 
 def light_eval(model, data, device, n_seen=15, seed=42):

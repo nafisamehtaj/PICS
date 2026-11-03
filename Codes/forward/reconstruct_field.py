@@ -31,7 +31,7 @@ from matplotlib.ticker import ScalarFormatter
 
 HERE = os.path.dirname(__file__)
 sys.path.insert(0, HERE)
-import scinonet_pinn as P  # noqa: E402
+import pics_pinn as P  # noqa: E402
 
 # plate geometry (mm) and source layout — same constants as the dataset generator
 MM = 1000.0

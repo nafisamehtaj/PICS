@@ -30,7 +30,7 @@ import matplotlib.pyplot as plt
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, os.path.join(REPO, "Codes", "forward"))
-import scinonet_pinn as P  # noqa: E402
+import pics_pinn as P  # noqa: E402
 import h5py  # noqa: E402
 
 MAT = os.path.abspath(os.path.join(HERE, "..", "..", "Dataset", "3D_Pristine.mat"))

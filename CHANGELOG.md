@@ -9,7 +9,7 @@ All notable changes and experiment mappings for the PICS project are documented 
 | Script | Manuscript element | What it produces |
 |---|---|---|
 | `Codes/forward/gen_layerwise_dataset.py` | Fig. 4, Section 2 | Training CSV for a spatial percentage (all 3 plies, perimeter points flagged) |
-| `Codes/forward/run_exp.py` + `scinonet_pinn.py` | Table 2, Table 3, Fig. 10 | One trained model per (spatial, temporal) cell: `model.pt`, `metrics.json`, loss curves, seen/unseen reconstructions |
+| `Codes/forward/run_exp.py` + `pics_pinn.py` | Table 2, Table 3, Fig. 10 | One trained model per (spatial, temporal) cell: `model.pt`, `metrics.json`, loss curves, seen/unseen reconstructions |
 | `Codes/forward/reconstruct_field.py` | - | Full top-ply field at chosen timesteps for one run |
 | `Codes/forward/make_results_table.py` | Table 3 | Seen/unseen relative-L2 table for one run |
 | `Codes/figures/regen_fig6_extrap_interp.py` | Fig. 6 | Seen vs unseen point signals at 10 % spatial, temporal 1/10/20 % |
@@ -41,7 +41,7 @@ See `FILE_RENAME_REFERENCE.md` for where every file came from.
 
 **Path changes only** - no functional change to any model, loss or figure:
 - Every script resolves `Dataset/3D_Pristine.mat`, `Results/forward_runs/<tag>/model.pt`
-  and `Codes/forward/scinonet_pinn.py` relative to its own location.
+  and `Codes/forward/pics_pinn.py` relative to its own location.
 
 **Included artefacts**
 - Nine trained forward models (`model.pt`, about 3 MB each) with `config.json`, `metrics.json`,

@@ -12,7 +12,7 @@ Selected points (printed at run time, also written to extrap_interp_meta.json):
 
 No dataset rebuild: scalers are read from each model.pt; the point selection and
 temporal keep-mask are reproduced from coordinates + seed (matching
-gen_layerwise_dataset.py and scinonet_pinn.build_dataset).
+gen_layerwise_dataset.py and pics_pinn.build_dataset).
 
 Original driver ran from the session scratchpad as seen_figure.py; this file is
 the same code recovered verbatim from the 2026-07-05 session transcript.
@@ -30,7 +30,7 @@ OUTBASE = os.path.abspath(os.path.join(HERE, "..", "..", "Results", "forward_run
 MAT     = os.path.abspath(os.path.join(HERE, "..", "..", "Dataset", "3D_Pristine.mat"))
 OUTDIR  = HERE
 sys.path.insert(0, SCRIPTS)
-import scinonet_pinn as P
+import pics_pinn as P
 import h5py
 
 # ---- architecture globals to match the trained checkpoints ----

@@ -20,7 +20,7 @@ import sys
 
 HERE = os.path.dirname(__file__)
 sys.path.insert(0, HERE)
-import scinonet_pinn as P  # noqa: E402
+import pics_pinn as P  # noqa: E402
 
 
 def main():

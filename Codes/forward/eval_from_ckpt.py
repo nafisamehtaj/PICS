@@ -21,7 +21,7 @@ HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 sys.path.insert(0, HERE)
 
-import scinonet_pinn as P  # noqa: E402
+import pics_pinn as P  # noqa: E402
 from run_exp import evaluate  # noqa: E402
 
 

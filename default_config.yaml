@@ -6,7 +6,7 @@
 # The scripts keep their own constants; this file is the single human-readable
 # reference. Forward values are the headline 20% spatial / 20% temporal run
 # (Results/forward_runs/sp20_t20_silu_F256_h256x256x256_a1_hpc/config.json);
-# code constants come from Codes/forward/scinonet_pinn.py.
+# code constants come from Codes/forward/pics_pinn.py.
 # =============================================================================
 
 # ---------------------

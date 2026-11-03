@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(__file__)
 sys.path.insert(0, HERE)
-import scinonet_pinn as P  # noqa: E402  (palette + save_fig + style)
+import pics_pinn as P  # noqa: E402  (palette + save_fig + style)
 
 
 def _cell(s):

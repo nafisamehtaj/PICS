@@ -1,6 +1,6 @@
 """Experiment 1 runner: layer-wise spatial sampling x 10% temporal, with ablations.
 
-Drives the config-driven core (`scinonet_pinn.py`). One invocation trains a single
+Drives the config-driven core (`pics_pinn.py`). One invocation trains a single
 configuration on a generated layer-wise dataset and writes, under
 ``outputs/<run_tag>/``:
 
@@ -34,7 +34,7 @@ HERE = os.path.dirname(__file__)
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 sys.path.insert(0, HERE)
 
-import scinonet_pinn as P  # noqa: E402
+import pics_pinn as P  # noqa: E402
 
 
 def _run_tag(args, pct):

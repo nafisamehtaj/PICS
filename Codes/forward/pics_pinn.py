@@ -1,4 +1,4 @@
-"""SciNoNet Helmholtz-potential PINN — config-driven port of june16_ffn_signal_reconstruction.
+"""PICS Helmholtz-potential PINN — config-driven port of june16_ffn_signal_reconstruction.
 
 Faithful port of the current setup (`june16_ffn_signal_reconstruction_(1).py`):
 same non-dimensionalization, Fourier features, four-potential network, Helmholtz

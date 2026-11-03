@@ -41,7 +41,7 @@ The ground truth is a peri-elastodynamic (PED) simulation of the plate: 180,000 
 ```
 ├── Codes/
 │   ├── forward/                      # PINN reconstruction (the nine Fig. 8 models)
-│   │   ├── scinonet_pinn.py          #   model, Fourier features, physics losses, training, plots
+│   │   ├── pics_pinn.py          #   model, Fourier features, physics losses, training, plots
 │   │   ├── gen_layerwise_dataset.py  #   sample the .mat into a training CSV
 │   │   ├── run_exp.py                #   train + evaluate one configuration
 │   │   ├── eval_from_ckpt.py         #   evaluate a run that stopped at the wall limit
@@ -71,8 +71,6 @@ The ground truth is a peri-elastodynamic (PED) simulation of the plate: 180,000 
 └── README.md
 ```
 
-`Codes/forward/scinonet_pinn.py` is the PICS forward model. The filename is historical and is
-kept because the saved checkpoints reference it when they are loaded.
 
 ---
 
